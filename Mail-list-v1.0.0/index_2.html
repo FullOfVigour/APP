@@ -65,8 +65,8 @@
 							var a ="#"+n["所在寝室"];
 //						if(n["所在寝室"]==a){
 							if(n["职位"] != "无") {
-								$(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
-							} else $(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");						
+								$(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + n["学号"]-1 + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
+							} else $(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" +  n["学号"]-1 + "')><span class='item'>" + n["姓名"] + "</li>");						
 //						}
 						});
 //						for(i= 0; i < n-1; i++) {
