@@ -22,15 +22,16 @@
 			</ul>
 		</div>
 		<footer class="mui-bar mui-bar-footer">
-			<button type="button" class="mui-btn mui-btn-outlined">按学号</button>
-			<button type="button" id="index_2.html" onclick="clicked(this.id)" class="mui-btn mui-btn-outlined">按寝室</button>
+			<button type="button">按学号</button>
+			<div id="cut-off-rule"></div>
+			<button type="button" id="index_2.html" onclick="clicked(this.id)">按寝室</button>
 		</footer>
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$.ajax({
 					type: "GET",
-					url: "Name_list.txt",
+					url: "//fullofvigour.github.io/APP/Name_list.txt",
 					dataType: "json",
 					success: function(data) {
 						var k = 0;
@@ -38,8 +39,8 @@
 						$.each(data, function(m, n) {
 							//获取对象中属性值
 							if(n["职位"] != "无") {
-								$('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
-							} else $('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");
+								$('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
+							} else $('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");
 						});
 					}
 				});

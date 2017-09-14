@@ -25,46 +25,42 @@
 			<ul class="dlist">
 				<li class="list">
 					<img src="../img/1.jpg" alt="" />
-					<span class="list-tab">
-						<p class="list-word"></p>
+					<span class="list-tab"id="name">
+						<p class="list-word" id="student-id"></p>
 					</span>
 				</li>
 				<li class="list clearfix">
 					<p class="list-lab">所在寝室：</p>
-					<p class="list-lab-word"></p>
+					<p class="list-lab-word" id="bedroom"></p>
 				</li>
 				<li class="list clearfix">
 					<p class="list-lab">班级职务：</p>
-					<p class="list-lab-word"></p>
+					<p class="list-lab-word" id="job"></p>
 				</li>
 				<li class="list clearfix">
 					<p class="list-lab">虚拟短号：</p>
-					<p class="list-lab-word"></p>
-					<a href="tel:111111"></a>
+					<p class="list-lab-word" id="trumpet"></p>
+					<a id="short-tel" href=""></a>
 				</li>
 				<li class="list clearfix">
 					<p class="list-lab">新的长号：</p>
-					<p class="list-lab-word"></p>
-					<a class="list-lab-a" href="tel:111111">
+					<p class="list-lab-word" id="new-trombone"></p>
+					<a class="list-lab-a new-long-tel" href="">
 						<i class="fa fa-phone" aria-hidden="true"></i>
 					</a>
-					<a class="list-lab-a" href="sms:11111111111">
+					<a class="list-lab-a new-long-sms" href="">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
 				</li>
 				<li class="list clearfix">
 					<p class="list-lab">旧的长号：</p>
-					<p class="list-lab-word"></p>
-					<a class="list-lab-a" href="tel:111111">
+					<p class="list-lab-word" id="old-trombone"></p>
+					<a class="list-lab-a old-long-tel" href="">
 						<i class="fa fa-phone" aria-hidden="true"></i>
 					</a>
-					<a class="list-lab-a" href="sms:11111111111">
+					<a class="list-lab-a old-long-sms" href="">
 						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 					</a>
-				</li>
-				<li class="list clearfix">
-					<p class="list-lab">生源地址：</p>
-					<p class="list-lab-word"></p>
 				</li>
 				<li class="list clearfix">
 					<p class="list-lab">个人简介：</p>
@@ -74,60 +70,31 @@
 			<div class="kuang"></div>
 		</div>
 		<script type="text/javascript" charset="utf-8">
-			//			mui.init(function() {
-			//				var test = window.location.search;
-			//				var ss = test.split("=");
-			//				var sss = parseInt(ss[1]);
-			//				$.ajax({
-			//					type: "GET",
-			//					url: "../music.txt",
-			//					dataType: "json",
-			//					success: function(data) {
-			//						//i表示在data中的索引位置，n表示包含的信息的对象 
-			//						$.each(data, function(i, n) {
-			//							//获取对象中属性值
-			//							//			            console.log(sss);
-			//							//		          	if(i==sss)alert(sss);
-			//							//		           	$('p').append("123");
-			//							console.log("d");
-			//						});
-			//					}
-			//				});
-			//
-			//			});
 			$(document).ready(function() {
 				var test = window.location.search;
 				var ss = test.split("=");
 				var sss = parseInt(ss[1]);
 				$.ajax({
 					type: "GET",
-					url: "../Name_list.txt",
+					url: "//fullofvigour.github.io/APP/Name_list.txt",
 					dataType: "json",
 					success: function(data) {
-						//	                var music="";
-						//	                var oLi_class = "plist-li";
-						//	                var oLi_onclick = "clicked('plus/qiuping.html?a=1')";
-						//	                //i表示在data中的索引位置，n表示包含的信息的对象 
-						//	                $.each(data,function(i,n){  
-						//	                    //获取对象中属性值
-						//	                    $('#plist').append("<li class='plist-li' onclick= clicked("+"'plus/qiuping.html?a="+i+"')><span class='item'>"+n["姓名"]+"</span><div class='li-lab'>"+n["职位"]+"</div></li>");
-						//	                    });
-						//	            }
-						
-//						$.each(data,function(i,n){
-//							if(i==sss){
-//								console.log(sss);
-//								var name=n["姓名"];
-//								$(".list-word").html(name);
-//							}
-//						});
-							var name=data[sss]["姓名"]
-								$(".list-word").html(name);
+					$("#name").prepend(data[sss]["姓名"]);
+					$("#student-id").html(data[sss]["学号"]);
+					$("#bedroom").html(data[sss]["所在寝室"]);
+					$("#job").html(data[sss]["职位"]);
+					$("#trumpet").html(data[sss]["短号"]);
+					$("#new-trombone").html(data[sss]["新号码"]);
+					$("#old-trombone").html(data[sss]["旧号码"]);
+					$('#short-tel').attr('href','tel:'+data[sss]["短号"]);
+					$('.new-long-tel').attr('href','tel:'+data[sss]["新号码"]);
+					$('.new-long-sms').attr('href','sms:'+data[sss]["新号码"]);
+					$('.old-long-tel').attr('href','tel:'+data[sss]["旧号码"]);
+					$('.old-long-sms').attr('href','sms:'+data[sss]["旧号码"]);
 					}
 				});
 				return false;
 			});
 		</script>
 	</body>
-
 </html>

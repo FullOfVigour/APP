@@ -34,15 +34,16 @@
 			</div>
 		</div>
 		<footer class="mui-bar mui-bar-footer">
-			<button type="button" class="mui-btn mui-btn-outlined" id="index_1.html" onclick="clicked(this.id)">按学号</button>
-			<button type="button" class="mui-btn mui-btn-outlined" id="footer-btn-right">按寝室</button>
+			<button type="button"id="index_1.html" onclick="clicked(this.id)">按学号</button>
+			<div id="cut-off-rule"></div>
+			<button type="button">按寝室</button>
 		</footer>
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$.ajax({
 					type: "GET",
-					url: "Name_list2.txt",
+					url: "//fullofvigour.github.io/APP/Name_list2.txt",
 					dataType: "json",
 					success: function(data) {
 						var oS = data[0];
@@ -61,11 +62,11 @@
 						$('.mui-table-view').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + data[n-1]["所在寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id="+oS["所在寝室"]+"></ul></div></li>");
 						$.each(data, function(m, n) {
 							//获取对象中属性值
-							var a ="."+n["所在寝室"];
-//						if(n["所在寝室"]==){
+							var a ="#"+n["所在寝室"];
+//						if(n["所在寝室"]==a){
 							if(n["职位"] != "无") {
-								$(a).append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
-							} else $(a).append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");						
+								$(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
+							} else $(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");						
 //						}
 						});
 //						for(i= 0; i < n-1; i++) {
