@@ -18,7 +18,7 @@
 		</header>
 		<div class="mui-content" id="result">
 			<ul class="plist">
-				<!--<li class="plist-li" onclick="clicked('plus/qiuping.html?a=')"></li>-->
+				
 			</ul>
 		</div>
 		<footer class="mui-bar mui-bar-footer">
@@ -39,8 +39,8 @@
 						$.each(data, function(m, n) {
 							//获取对象中属性值
 							if(n["职位"] != "无") {
-								$('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
-							} else $('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");
+								$('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><div class='stu-id'>"+n["学号"]+"、</div><span class='item'>" +n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
+							} else $('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + m + "')><div class='stu-id'>"+n["学号"]+"、</div><span class='item'>" +n["姓名"] + "</li>");
 						});
 					}
 				});

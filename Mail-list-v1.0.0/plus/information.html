@@ -24,7 +24,6 @@
 		<div class="mui-content">
 			<ul class="dlist">
 				<li class="list">
-					<img src="../img/1.jpg" alt="" />
 					<span class="list-tab"id="name">
 						<p class="list-word" id="student-id"></p>
 					</span>
@@ -76,11 +75,11 @@
 				var sss = parseInt(ss[1]);
 				$.ajax({
 					type: "GET",
-					url: "//fullofvigour.github.io/APP/Name_list2.txt",
+					url: "//fullofvigour.github.io/APP/Name_list.txt",
 					dataType: "json",
 					success: function(data) {
 					$("#name").prepend(data[sss]["姓名"]);
-					$("#student-id").html(data[sss]["学号"]);
+					$("#student-id").html(data[sss]["长学号"]);
 					$("#bedroom").html(data[sss]["所在寝室"]);
 					$("#job").html(data[sss]["职位"]);
 					$("#trumpet").html(data[sss]["短号"]);

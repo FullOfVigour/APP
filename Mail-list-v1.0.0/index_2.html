@@ -19,22 +19,11 @@
 		<div class="mui-content">
 			<div class="mui-card">
 				<ul class="mui-table-view">
-					<!--<li class="mui-table-view-cell mui-collapse">
-						<a class="mui-navigate-right" href="#">6-610</a>
-						<div class="mui-collapse-content">
-							<ul id="plist">
-								<li class="plist-li" id="plus/qiuping.html" onclick="clicked(this.id)">
-									<span class="item">邱平</span>
-									<div class="li-lab">暂无</div>
-								</li>
-							</ul>
-						</div>
-					</li>-->
 				</ul>
 			</div>
 		</div>
 		<footer class="mui-bar mui-bar-footer">
-			<button type="button"id="index_1.html" onclick="clicked(this.id)">按学号</button>
+			<button type="button" id="index_1.html" onclick="clicked(this.id)">按学号</button>
 			<div id="cut-off-rule"></div>
 			<button type="button">按寝室</button>
 		</footer>
@@ -52,46 +41,21 @@
 						var i;
 						var n = data.length;
 						var k = 1;
-						for(i=1;i<n;i++){
+						for(i = 1; i < n; i++) {
 							k++;
-							if(oS["所在寝室"]!=data[i]["所在寝室"]){
-								$('.mui-table-view').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + oS["所在寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id="+oS["所在寝室"]+"></ul></div></li>");
-								oS=data[i];
+							if(oS["所在寝室"] != data[i]["所在寝室"]) {
+								$('.mui-table-view').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + oS["所在寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id=" + oS["所在寝室"] + "></ul></div></li>");
+								oS = data[i];
 							}
 						}
-						$('.mui-table-view').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + data[n-1]["所在寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id="+oS["所在寝室"]+"></ul></div></li>");
+						$('.mui-table-view').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + data[n - 1]["所在寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id=" + oS["所在寝室"] + "></ul></div></li>");
 						$.each(data, function(m, n) {
 							//获取对象中属性值
-							var a ="#"+n["所在寝室"];
-//						if(n["所在寝室"]==a){
+							var a = "#" + n["所在寝室"];
 							if(n["职位"] != "无") {
-								$(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + n["学号"]-1 + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
-							} else $(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" +  n["学号"]-1 + "')><span class='item'>" + n["姓名"] + "</li>");						
-//						}
+								$(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + (n["学号"] - 1) + "')><div class='stu-id'>" + n["学号"] + "、</div><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
+							} else $(a).append("<li class='plist-li' onclick= clicked(" + "'plus/information.html?a=" + (n["学号"] - 1) + "')><div class='stu-id'>" + n["学号"] + "、</div><span class='item'>" + n["姓名"] + "</li>");
 						});
-//						for(i= 0; i < n-1; i++) {
-//							if(oS!= data[i+1]["所在寝室"]){
-//								$('.mui-table-view').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + data[i]["所在寝室"] + "</a><div class='mui-collapse-content'><ul id='plist'></ul></div></li>");
-//								alert("创建寝室"+data[i]["所在寝室"]);
-//							}
-//							for(j=i;j<n-i-1;j++){
-////								console.log(l);
-////								console.log(n);
-//								if(oS== data[i]["所在寝室"]) {
-//									alert("创建人"+data[i]["姓名"]);
-//									if(data[i]["职位"] != "无") {
-//										$('#plist').append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + data[i]["学号"]-1 + "')><span class='item'>" + data[i]["姓名"] + "</span><div class='li-lab'>" + data[i]["职位"] + "</div></li>");
-//									} 
-//									else $('#plist').append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + data[i]["学号"]-1 + "')><span class='item'>" + data[i]["姓名"] + "</li>");
-//								} 
-//								else {
-//									
-//									oS = data[j]["所在寝室"];
-//									break;
-//								}
-//							}
-//							i = j - 1;
-//						}
 					}
 				});
 				return false;
