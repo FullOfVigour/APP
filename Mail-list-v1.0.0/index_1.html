@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/css.css" />
+		<link rel="stylesheet" type="text/css" href="css/css.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">软件171通讯录</h1>
+		</header>
+		<div class="mui-content" id="result">
+			<ul class="plist">
+				<!--<li class="plist-li" onclick="clicked('plus/qiuping.html?a=')"></li>-->
+			</ul>
+		</div>
+		<footer class="mui-bar mui-bar-footer">
+			<button type="button" class="mui-btn mui-btn-outlined">按学号</button>
+			<button type="button" id="index_2.html" onclick="clicked(this.id)" class="mui-btn mui-btn-outlined">按寝室</button>
+		</footer>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.ajax({
+					type: "GET",
+					url: "Name_list.txt",
+					dataType: "json",
+					success: function(data) {
+						var k = 0;
+						//i表示在data中的索引位置，n表示包含的信息的对象 
+						$.each(data, function(m, n) {
+							//获取对象中属性值
+							if(n["职位"] != "无") {
+								$('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</span><div class='li-lab'>" + n["职位"] + "</div></li>");
+							} else $('.plist').append("<li class='plist-li' onclick= clicked(" + "'plus/qiuping.html?a=" + m + "')><span class='item'>" + n["姓名"] + "</li>");
+						});
+					}
+				});
+				return false;
+			});
+		</script>
+	</body>
+
+</html>
