@@ -171,21 +171,21 @@
 					},
 					"ipad": {
 						"portrait": "C:/Users/bestway/Desktop/tup/p6.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "C:/Users/bestway/Desktop/tup/p8.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"portrait-retina": "C:/Users/bestway/Desktop/tup/p10.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
 						"landscape": "C:/Users/bestway/Desktop/tup/p7.png", /*iPad横屏启动图片，分辨率：1024x748*/
 						"landscape-retina": "C:/Users/bestway/Desktop/tup/p11.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
 						"portrait7": "C:/Users/bestway/Desktop/tup/p8.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "C:/Users/bestway/Desktop/tup/p11.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"portrait-retina7": "C:/Users/bestway/Desktop/tup/p12.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
 						"landscape7": "C:/Users/bestway/Desktop/tup/p9.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "C:/Users/bestway/Desktop/tup/p9.png"
+						"landscape-retina7": "C:/Users/bestway/Desktop/tup/p13.png"
 					}
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
 					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "C:/Users/bestway/Desktop/tup/p10.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "C:/Users/bestway/Desktop/tup/p11.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "C:/Users/bestway/Desktop/tup/p12.png"
+					"hdpi": "C:/Users/bestway/Desktop/tup/p14.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "C:/Users/bestway/Desktop/tup/p15.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "C:/Users/bestway/Desktop/tup/p16.png"
 				}
 			}
 		}
