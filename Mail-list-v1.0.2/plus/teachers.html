@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<title>详情页</title>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery.min.js" type="text/javascript"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/css.css" />
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">联系人详情</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="dlist">
+				<li class="list">
+					<span class="list-tab"id="name">
+						<p class="list-word" id="student-id"></p>
+					</span>
+				</li>
+				<li class="list clearfix">
+					<p class="list-lab">所任科目：</p>
+					<p class="list-lab-word" id="job"></p>
+				</li>
+				<li class="list clearfix">
+					<p class="list-lab">虚拟短号：</p>
+					<p class="list-lab-word" id="trumpet"></p>
+					<div class="list-lab-div">
+						<a class="list-lab-a" id="short-tel" href="#">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</a>
+					</div>
+				</li>
+				<li class="list clearfix">
+					<p class="list-lab">手机：</p>
+					<p class="list-lab-word" id="trombone"></p>
+					<div class="list-lab-div">
+						<a class="list-lab-a new-long-tel" href="#">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</a>
+						<a class="list-lab-a new-long-sms" href="#">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</a>
+					</div>
+				</li>
+				<li class="list"></li>
+				
+			</ul>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+		mui.init();
+			$(document).ready(function() {
+				var test = window.location.search;
+				var ss = test.split("=");
+				var sss = parseInt(ss[1]);
+				$.ajax({
+					type: "GET",
+					url: "https://fullofvigour.github.io/APP/Name_list3.txt",
+					dataType: "json",
+					success: function(data) {
+					$("#name").prepend(data[sss]["姓名"]);
+					$("#job").append(data[sss]["科目"]);
+					$("#trumpet").append(data[sss]["短号"]);
+					$("#trombone").append(data[sss]["长号"]);
+					$('#short-tel').attr('href','tel:'+data[sss]["短号"]);
+					$('.new-long-tel').attr('href','tel:'+data[sss]["长号"]);
+					}
+				});
+				return false;
+			});
+		</script>
+	</body>
+</html>
