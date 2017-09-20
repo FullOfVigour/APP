@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<title>按寝室</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/css.css"/>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			//取消浏览器的所有事件，使得active的样式在手机上正常生效
+			document.addEventListener('touchstart', function() {
+				return false;
+			}, true);
+			// 禁止选择
+			document.oncontextmenu = function() {
+				return false;
+			};
+			// H5 plus事件处理
+			var as = 'pop-in'; // 默认窗口动画
+			function plusReady() {
+				// 隐藏滚动条
+				plus.webview.currentWebview().setStyle({
+					scrollIndicator: 'none'
+				});
+				//				 Android处理返回键
+				plus.key.addEventListener('backbutton', function() {
+					('iOS' == plus.os.name) ? plus.nativeUI.confirm('确认退出？', function(e) {
+						if(e.index > 0) {
+							plus.runtime.quit();
+						}
+					}, '', []): (plus.runtime.quit());
+				}, false);
+				compatibleAdjust();
+			}
+			if(window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			// DOMContentLoaded事件处理
+			var _domReady = false;
+			document.addEventListener('DOMContentLoaded', function() {
+				_domReady = true;
+				compatibleAdjust();
+			}, false);
+			// 兼容性样式调整
+			var _adjust = false;
+
+			function compatibleAdjust() {
+				if(_adjust || !window.plus || !_domReady) {
+					return;
+				}
+				_adjust = true;
+				// iOS平台特效
+				if('iOS' == plus.os.name) {
+					document.getElementById('content').className = 'scontent'; // 使用div的滚动条
+					if(navigator.userAgent.indexOf('StreamApp') >= 0) { // 在流应用模式下显示返回按钮
+						document.getElementById('back').style.visibility = 'visible';
+					}
+				}
+				// 预创建二级窗口
+				//	preateWebviews();
+				// 关闭启动界面
+				plus.navigator.setStatusBarBackground('#D74B28');
+				setTimeout(function() {
+					plus.navigator.closeSplashscreen();
+				}, 200);
+			}
+			// 处理点击事件
+			var _openw = null;
+			/**
+			 * 点击打开新窗口
+			 * @param {Object} id	加载的页面地址，也用作窗口标识
+			 * @param {Object} a	页面动画内心，默认使用全局as设置的值
+			 * @param {Object} s	是否不显示窗口
+			 */
+			function clicked(id, a, s) {
+				if(_openw) {
+					return;
+				}
+				a || (a = as);
+				_openw = preate[id];
+				if(_openw) {
+					_openw.showded = true;
+					_openw.show(a, null, function() {
+						_openw = null; //避免快速点击打开多个页面
+					});
+				} else {
+					//		var wa=plus.nativeUI.showWaiting();
+					//		_openw=plus.webview.create(id,id,{scrollIndicator:'none',scalable:false,popGesture:'hide'},{preate:true});//复用二级页面
+					_openw = plus.webview.create(id, id, {
+						scrollIndicator: 'none',
+						scalable: false,
+						popGesture: 'close'
+					});
+					preate[id] = _openw;
+					_openw.addEventListener('loaded', function() { //叶面加载完成后才显示
+						//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+						//			wa.close();
+						_openw.showded = true;
+						s || _openw.show(a, null, function() {
+							_openw = null; //避免快速点击打开多个页面
+						});
+						s && (_openw = null); //避免s模式下变量无法重置
+						//		},10);
+					}, false);
+					_openw.addEventListener('hide', function() {
+						_openw && (_openw.showded = true);
+						_openw = null;
+					}, false);
+					_openw.addEventListener('close', function() { //页面关闭后可再次打开
+						_openw = null;
+						preate[id] && (preate[id] = null); //兼容窗口的关闭
+					}, false);
+				}
+			}
+			// 预创建二级页面
+			var preate = {};
+		</script>
+	</head>
+	<body onselectstart="return false;">
+		<header class="mui-bar mui-bar-nav">
+		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <h1 class="mui-title">软件171通讯录</h1>
+		</header>
+
+		<footer class="mui-bar mui-bar-footer">
+			<ul  class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+				<li class="footer-li" id="index_1.html" onclick="clicked(this.id)">
+					<span class="mui-icon mui-icon-phone"></span>
+					<span class="mui-tab-label">按学号</span>
+				</li>
+				<li  class="footer-li">
+					<span class="mui-icon mui-icon-home" id="sp-color"></span>
+					<span class="mui-tab-label">按寝室</span>
+				</li>
+			</ul>
+		</footer>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="drom">
+			</ul>
+		</div>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.ajax({
+					type: "GET",
+					url: "https://fullofvigour.github.io/APP/Name_list2.txt",
+					dataType: "json",
+					success: function(data) {
+						var oS = data[0];
+						var i;
+						var n = data.length;
+						for(i=1;i<n;i++){
+							if(oS["寝室"]!=data[i]["寝室"]){
+								$('#drom').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + oS["寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id="+oS["寝室"]+"></ul></div></li>");
+								oS=data[i];
+							}
+						}
+						$('#drom').append("<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>" + data[n-1]["寝室"] + "</a><div class='mui-collapse-content'><ul class='plist' id="+oS["寝室"]+"></ul></div></li>");
+						$.each(data, function(m, n) {
+							//获取对象中属性值
+							var a ="#"+n["寝室"];
+							if(n["职位"] != "无") {
+								$(a).append("<li class='mui-table-view-cell' onclick= clicked(" + "'plus/information.html?a=" + m + "')><div class='mui-slider-cell'><div class='oa-contact-cell mui-table'><div class='oa-contact-avatar mui-table-cell'><img src='http://placehold.it/60x60' /></div><div class='oa-contact-content mui-table-cell'><div class='mui-clearfix'><h4 class='oa-contact-name'>"+n["姓名"]+"</h4><span class='oa-contact-position mui-h6'>"+n["职位"]+"</span></div><p class='oa-contact-email mui-h6'>"+n["QQ"]+"</p></div></div></div></li>");
+							} else $(a).append("<li class='mui-table-view-cell' onclick= clicked(" + "'plus/information.html?a=" + m + "')><div class='mui-slider-cell'><div class='oa-contact-cell mui-table'><div class='oa-contact-avatar mui-table-cell'><img src='http://placehold.it/60x60' /></div><div class='oa-contact-content mui-table-cell'><div class='mui-clearfix'><h4 class='oa-contact-name'>"+n["姓名"]+"</h4></div><p class='oa-contact-email mui-h6'>"+n["QQ"]+"</p></div></div></div></li>");
+						});
+					}
+				});
+				return false;
+			});
+		</script>
+	</body>
+</html>

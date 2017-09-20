@@ -1,0 +1,34 @@
+{
+  "index_1.html": {
+    "resources": [
+      "css/css.css",
+      "js/jquery.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "plus/information.html",
+      "index_2.html"
+    ]
+  },
+  "plus/information.html": {
+    "resources": [
+      "css/css.css",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "index_2.html": {
+    "resources": [
+      "css/css.css",
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "img/001.jpg"
+    ],
+    "refer": [
+      "index_1.html",
+      "plus/information.html"
+    ]
+  }
+}
