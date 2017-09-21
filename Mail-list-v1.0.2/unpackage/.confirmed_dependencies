@@ -28,7 +28,14 @@
     ],
     "refer": [
       "index_1.html",
-      "plus/information.html"
+      "plus/information.html",
+      "plus/teachers.html"
+    ]
+  },
+  "plus/teachers.html": {
+    "resources": [
+      "css/css.css",
+      "css/mui.min.css"
     ]
   }
 }

@@ -1,7 +1,7 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
 	"id": "H517C9F6E",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "软件1771通讯录",/*应用名称，程序桌面图标名称*/
+	"name": "软件171通讯录",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0.0",/*应用版本名称*/
 		"code": "83"
@@ -223,8 +223,17 @@
 				],
 				"refer": [
 					"index_1.html",
-					"plus/information.html"
+					"plus/information.html",
+					"plus/teachers.html"
 				],
+				"priority": 0
+			},
+			"plus/teachers.html": {
+				"resources": [
+					"css/css.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},
