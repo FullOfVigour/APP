@@ -169,7 +169,7 @@
 			$(document).ready(function() {
 				$.ajax({
 					type: "GET",
-					url: "https://fullofvigour.github.io/APP/Name_list.txt",
+					url: "https://raw.githubusercontent.com/FullOfVigour/APP/gh-pages/Name_list.txt",
 					dataType: "json",
 					success: function(data) {
 						var k = 0;
@@ -177,9 +177,7 @@
 						$.each(data, function(m, n) {
 							//获取对象中属性值
 								$('#teacher').append("<li class='mui-table-view-cell' onclick= clicked(" + "'plus/teachers.html?a=" + m + "')><div class='mui-slider-cell'><div class='oa-contact-cell mui-table'><div class='oa-contact-avatar mui-table-cell'><img src='http://placehold.it/60x60' /></div><div class='oa-contact-content mui-table-cell'><div class='mui-clearfix'><h4 class='oa-contact-name'>"+n["姓名"]+"</h4><span class='oa-contact-position mui-h6'>"+n["科目"]+"</span></div><p class='oa-contact-email mui-h6'>QQ:"+n["QQ"]+"</p></div></div></div></li>");
-							});
-							console.log("2");
-//							console.log(data);
+						});
 					}
 				});
 				return false;
@@ -187,7 +185,7 @@
 			$(document).ready(function() {
 				$.ajax({
 					type: "GET",
-					url: "https://fullofvigour.github.io/APP/Name_list1.txt",
+					url: "https://raw.githubusercontent.com/FullOfVigour/APP/gh-pages/Name_list-one.txt",
 					dataType: "json",
 					success: function(data) {
 						var k = 0;
@@ -198,7 +196,7 @@
 								$('#plist').append("<li class='mui-table-view-cell' onclick= clicked(" + "'plus/information.html?a=" + m + "')><div class='mui-slider-cell'><div class='oa-contact-cell mui-table'><div class='oa-contact-avatar mui-table-cell'><img src='http://placehold.it/60x60' /></div><div class='oa-contact-content mui-table-cell'><div class='mui-clearfix'><h4 class='oa-contact-name'>"+n["姓名"]+"</h4><span class='oa-contact-position mui-h6'>"+n["职位"]+"</span></div><p class='oa-contact-email mui-h6'>QQ:"+n["QQ"]+"</p></div></div></div></li>");
 							} else $('#plist').append("<li class='mui-table-view-cell' onclick= clicked(" + "'plus/information.html?a=" + m + "')><div class='mui-slider-cell'><div class='oa-contact-cell mui-table'><div class='oa-contact-avatar mui-table-cell'><img src='http://placehold.it/60x60' /></div><div class='oa-contact-content mui-table-cell'><div class='mui-clearfix'><h4 class='oa-contact-name'>"+n["姓名"]+"</h4></div><p class='oa-contact-email mui-h6'>QQ:"+n["QQ"]+"</p></div></div></div></li>");
 						});
-					}
+					},error:function(){console.log("2")}
 				});
 				return false;
 			});

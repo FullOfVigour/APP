@@ -63,7 +63,7 @@
 				var sss = parseInt(ss[1]);
 				$.ajax({
 					type: "GET",
-					url: "https://fullofvigour.github.io/APP/Name_list.txt",
+					url: "https://raw.githubusercontent.com/FullOfVigour/APP/gh-pages/Name_list.txt",
 					dataType: "json",
 					success: function(data) {
 					$("#name").prepend(data[sss]["姓名"]);
